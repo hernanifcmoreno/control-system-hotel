@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<!-- left menu starts -->
+<div class="col-sm-2 col-lg-2">
+	<div class="sidebar-nav">
+		<div class="nav-canvas">
+			<div class="nav-sm nav nav-stacked"></div>
+			<ul class="nav nav-pills nav-stacked main-menu">
+				<li class="nav-header">Main</li>
+				<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/"><i
+						class="glyphicon glyphicon-home"></i><span> Dashboard</span></a></li>
+				<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/relatorios"><i
+						class="glyphicon glyphicon-signal"></i><span> Relatórios</span></a></li>
+				 <li class="nav-header hidden-md">Cadastros</li>
+				<li class="accordion">
+				   <a href="#">
+				       <i class="glyphicon glyphicon-plus"></i>
+				        <span> Cadastros</span>
+				   </a>
+					<ul class="nav nav-pills nav-stacked">
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/cliente.xhtml"><i class="glyphicon glyphicon-user"></i><span> Cliente</span></a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/funcionario.xhtml">Funcionário</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/fornecedor.xhtml">Fornecedor</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/tipo-telefone.xhtml">Tipo Telefone</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/tipo-quarto.xhtml">Tipo de Quarto</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/quarto.xhtml">Quarto</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/quarto-opcionais.xhtml">Quarto Opcionais</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/pais.xhtml">País</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/estado.xhtml">Estado</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/cidade.xhtml">Cidade</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/tipo-endereco.xhtml">Tipo de Endereço</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/tipo-logradouro.xhtml">Tipo de Logradouro</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/estado-civil.xhtml">Estado Civil</a></li>
+						<li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/cadastro/usuario.xhtml">Usuário</a></li>
+					</ul></li>
+					 <li class="nav-header hidden-md">Reserva</li>
+					 <li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/reserva/criar.xhtml"><i class="glyphicon glyphicon-calendar"></i><span> Criar Reserva</span></a></li>
+					 <li><a class="ajax-link" href="#{facesContext.externalContext.requestContextPath}/painel-admin/reserva/efetuadas.xhtml"><i class="glyphicon glyphicon-shopping-cart"></i><span> Reservas efetuadas</span></a></li>
+			</ul>
+			<label id="for-is-ajax" for="is-ajax"><input id="is-ajax"
+				type="checkbox" /> Ajax on menu</label>
+		</div>
+	</div>
+</div>
+<!--/span-->
+<!-- left menu ends -->
+
+</html>

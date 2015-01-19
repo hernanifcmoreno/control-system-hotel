@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="cshPU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.com.csh.model.bean.CidadeBean</class>
+		<class>br.com.csh.model.bean.EnderecoBean</class>
+		<class>br.com.csh.model.bean.EstadoBean</class>
+		<class>br.com.csh.model.bean.EstadoCivilBean</class>
+		<class>br.com.csh.model.bean.FornecedorBean</class>
+		<class>br.com.csh.model.bean.FuncionarioBean</class>
+		<class>br.com.csh.model.bean.FuncionarioDependenteBean</class>
+		<class>br.com.csh.model.bean.GenericBean</class>
+		<class>br.com.csh.model.bean.HospedeBean</class>
+		<class>br.com.csh.model.bean.PaisBean</class>
+		<class>br.com.csh.model.bean.PessoaBean</class>
+		<class>br.com.csh.model.bean.PessoaFisicaBean</class>
+		<class>br.com.csh.model.bean.PessoaJuridicaBean</class>
+		<class>br.com.csh.model.bean.ProfissaoBean</class>
+		<class>br.com.csh.model.bean.QuartoBean</class>
+		<class>br.com.csh.model.bean.QuartoCategoriaBean</class>
+		<class>br.com.csh.model.bean.QuartoLogBean</class>
+		<class>br.com.csh.model.bean.QuartoOpcionalBean</class>
+		<class>br.com.csh.model.bean.ReservaBean</class>
+		<class>br.com.csh.model.bean.ServicoPrestadoBean</class>
+		<class>br.com.csh.model.bean.TelefoneBean</class>
+		<class>br.com.csh.model.bean.TipoEnderecoBean</class>
+		<class>br.com.csh.model.bean.TipoLogradouroBean</class>
+		<class>br.com.csh.model.bean.TipoTelefoneBean</class>
+		<class>br.com.csh.model.bean.UsuarioBean</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<!-- <property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/> -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/csh"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="root"/>
+			
+			<!--<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="titulo" /></title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description"
+		content="CSH - Sistema para controle de hoteis." />
+	<meta name="author" content="Winner Technology LTDA ME" />
+	<h:outputStylesheet library="css" name="bootstrap-cerulean.min.css" />
+	<h:outputStylesheet library="css" name="charisma-app.css" />
+	<h:outputStylesheet library="bower_components/fullcalendar/dist"
+		name="fullcalendar.css" />
+	<h:outputStylesheet library="bower_components/fullcalendar/dist"
+		name="fullcalendar.print.css" />
+	<h:outputStylesheet library="bower_components/chosen"
+		name="chosen.min.css" />
+	<h:outputStylesheet library="bower_components/colorbox/example3"
+		name="colorbox.css" />
+	<h:outputStylesheet library="bower_components/responsive-tables"
+		name="responsive-tables.css" />
+	<h:outputStylesheet library="bower_components/bootstrap-tour/build/css"
+		name="bootstrap-tour.min.css" />
+	<h:outputStylesheet library="css" name="jquery.noty.css" />
+	<h:outputStylesheet library="css" name="noty_theme_default.css" />
+	<h:outputStylesheet library="css" name="elfinder.min.css" />
+	<h:outputStylesheet library="css" name="elfinder.theme.css" />
+	<h:outputStylesheet library="css" name="jquery.iphone.toggle.css" />
+	<h:outputStylesheet library="css" name="uploadify.css" />
+	<h:outputStylesheet library="css" name="animate.min.css" />
+
+	<h:outputScript library="bower_components/jquery" name="jquery.min.js" />
+
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+    	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	<!-- The fav icon -->
+	<link rel="shortcut icon" href="img/favicon.ico" />
+
+</h:head>
+<h:body >
+	<p:growl id="msg" showDetail="true" sticky="true" />
+	<ui:include src="/layouts/nav.xhtml" />
+	<div class="ch-container">
+		<div class="row">
+			<ui:include src="/layouts/menuLeft.xhtml" />
+			<noscript>
+				<div class="alert alert-block col-md-12">
+					<h4 class="alert-heading">Warning!</h4>
+
+					<p>
+						You need to have <a href="http://en.wikipedia.org/wiki/JavaScript"
+							target="_blank">JavaScript</a> enabled to use this site.
+					</p>
+				</div>
+			</noscript>
+
+			<div id="content" class="col-lg-10 col-sm-10">
+				<!-- content starts -->
+				<div>
+					<ul class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Dashboard</a></li>
+					</ul>
+				</div>
+				<ui:insert name="principal" />
+			</div>
+			<!--/#content.col-md-0-->
+		</div>
+		<!--/fluid-row-->
+	</div>
+	<!--/.fluid-container-->
+
+	<h:outputScript library="bower_components/bootstrap/dist/js"
+		name="bootstrap.min.js" target="body" />
+	<h:outputScript library="js" name="jquery.cookie.js" target="body" />
+	<h:outputScript library="bower_components/moment/min"
+		name="moment.min.js" target="body" />
+	<h:outputScript library="bower_components/fullcalendar/dist"
+		name="fullcalendar.min.js" target="body" />
+	<h:outputScript library="js" name="jquery.dataTables.min.js" target="body" />
+	<h:outputScript library="bower_components/chosen"
+		name="chosen.jquery.min.js" target="body" />
+	<h:outputScript library="bower_components/colorbox"
+		name="jquery.colorbox-min.js" target="body" />
+	<h:outputScript library="js" name="jquery.noty.js" target="body" />
+	<h:outputScript library="bower_components/responsive-tables"
+		name="responsive-tables.js" target="body" />
+	<h:outputScript library="bower_components/bootstrap-tour/build/js"
+		name="bootstrap-tour.min.js" target="body" />
+	<h:outputScript library="js" name="jquery.raty.min.js" target="body" />
+	<h:outputScript library="js" name="jquery.iphone.toggle.js" target="body" />
+	<h:outputScript library="js" name="jquery.autogrow-textarea.js" target="body" />
+	<h:outputScript library="js" name="jquery.uploadify-3.1.min.js" target="body" />
+	<h:outputScript library="js" name="jquery.history.js" target="body" />
+	<h:outputScript library="js" name="charisma.js" target="body" />
+</h:body>
+</html>

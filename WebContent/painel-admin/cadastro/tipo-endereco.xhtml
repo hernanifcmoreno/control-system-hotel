@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layouts/layoutAdmin.xhtml">
+	<ui:define name="principal">
+		<div class="row">
+			<div class="box col-md-12">
+				<div class="box-inner">
+					<div class="box-header well" data-original-title="">
+						<h2>
+							<i class="glyphicon glyphicon-star-empty"></i> Tipo de Endereço
+						</h2>
+
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round btn-default"><i
+								class="glyphicon glyphicon-chevron-up"></i></a> <a href="#"
+								class="btn btn-close btn-round btn-default"><i
+								class="glyphicon glyphicon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<div class="box-content row">
+							<div class="col-md-12">
+								<h:form role="form" prependId="false">
+									<p:panel columns="3" layout="block" style="border:none;">
+										<p:commandButton value="Pesquisar"
+											styleClass="btn btn-default-sm ajax-link"
+											action="#{tipoEnderecoMB.pesquisar}" ajax="true"
+											icon="ui-icon-search" update=":formPesquisaResultado">
+										</p:commandButton>
+										<p:commandButton value="Cancelar" ajax="true" update="@form"
+											styleClass="btn btn-danger-sm ajax-link"
+											icon="ui-icon-circle-close"
+											action="#{tipoEnderecoMB.cancelar}">
+										</p:commandButton>
+										<p:commandButton value="Novo" ajax="true"
+											rendered="#{tipoEnderecoMB.acao eq 'P'}"
+											update=":panelPersist" action="#{tipoEnderecoMB.save}"
+											icon="ui-icon-circle-plus" style="float:right">
+											<f:setPropertyActionListener value="P"
+												target="#{tipoEnderecoMB.acao}" />
+										</p:commandButton>
+
+										<p:commandButton value="Salvar" ajax="true"
+											rendered="#{tipoEnderecoMB.acao eq 'E' or tipoEnderecoMB.acao eq 'S'}"
+											update=":panelPersist" action="#{tipoEnderecoMB.prepareNovo}"
+											icon="ui-icon-disk" style="float:right">
+											<f:setPropertyActionListener value="S"
+												target="#{tipoEnderecoMB.acao}" />
+										</p:commandButton>
+									</p:panel>
+								</h:form>
+							</div>
+							<p:panel id="panelPersist">
+								<div class="box col-md-12">
+									<div class="box-inner">
+										<div class="box-header well" data-original-title="">
+											<h2>Tipos de Endereços Cadastrados</h2>
+											<div class="box-icon">
+												<a href="#" class="btn btn-minimize btn-round btn-default"><i
+													class="glyphicon glyphicon-chevron-up"></i></a>
+											</div>
+										</div>
+										<p:panel rendered="#{tipoEnderecoMB.acao == 'P'}"
+											id="formPesquisaResultado">
+											<h:form id="formResultado">
+												<h:dataTable value="#{tipoEnderecoMB.tiposEndereco}"
+													var="tipo"
+													styleClass="table table-striped table-bordered responsive">
+													<h:column>
+														<f:facet name="header">Id</f:facet>
+														<h:outputText value="#{tipo.id}" />
+													</h:column>
+													<h:column>
+														<f:facet name="header">Descrição</f:facet>
+														<h:outputText value="#{tipo.descricao}" />
+													</h:column>
+													<h:column>
+														<f:facet name="header">Ação</f:facet>
+														<p:commandButton value="Editar" ajax="true" update="@form">
+															<f:setPropertyActionListener value="{tipo}"
+																target="#{tipoEnderecoMB.tipoEnderecoSelecionado}" />
+															<f:setPropertyActionListener value="E"
+																target="#{tipoEnderecoMB.acao}" />
+														</p:commandButton>
+														<p:commandButton value="Excluir">
+															<f:setPropertyActionListener value="{tipo}" ajax="true"
+																update="@form"
+																target="#{tipoEnderecoMB.tipoEnderecoSelecionado}" />
+														</p:commandButton>
+													</h:column>
+												</h:dataTable>
+
+
+												<h:panelGrid
+													rendered="#{tipoEnderecoMB.acao eq 'E' or tipoEnderecoMB.acao eq 'S'}"
+													id="persistir">
+
+													<p:outputLabel value="Descrição" for="txtId"
+														rendered="#{tipoEnderecoMB.acao eq 'E'}" />
+													<p:inputText
+														value="#{tipoEnderecoMB.tipoEnderecoSelecionado.id}"
+														id="txtId" disabled="true"
+														rendered="#{tipoEnderecoMB.acao eq 'E'}" />
+
+													<p:outputLabel value="Descrição" for="txtDescricao" />
+													<p:inputText
+														value="#{tipoEnderecoMB.tipoEnderecoSelecionado.descricao}" id="txtDescricao" />
+												</h:panelGrid>
+											</h:form>
+										</p:panel>
+									</div>
+								</div>
+							</p:panel>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/row-->
+	</ui:define>
+</ui:composition>
+
+
+</html>
+
