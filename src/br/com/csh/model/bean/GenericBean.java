@@ -33,13 +33,13 @@ public abstract class GenericBean implements Serializable {
 	@Temporal(TemporalType.TIME)
 	private Date dataExclusao;
 
-	private Integer usuarioCadastro;
+	private int usuarioCadastro;
+	
 	@Column(nullable = true)
-	@Nullable
-	private Integer usuarioAlteracao;
+	private @Nullable Integer usuarioAlteracao;
+	
 	@Column(nullable = true)
-	@Nullable
-	private Integer usuarioExlusao;
+	private @Nullable Integer usuarioExlusao;
 
 	@Transient
 	private UsuarioBean usuarioBean;

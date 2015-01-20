@@ -6,6 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/layouts/layoutAdmin.xhtml">
+	<p:growl id="msg" showDetail="true" sticky="true" />
 	<ui:define name="principal">
 		<div class="row">
 			<div class="box col-md-12">
@@ -24,38 +25,46 @@
 					</div>
 					<div class="box-content">
 						<div class="box-content row">
-							<div class="col-md-12">
-								<h:form role="form" prependId="false">
-									<p:panel columns="3" layout="block" style="border:none;">
-										<p:commandButton value="Pesquisar"
-											styleClass="btn btn-default-sm ajax-link"
-											action="#{tipoEnderecoMB.pesquisar}" ajax="true"
-											icon="ui-icon-search" update=":formPesquisaResultado">
-										</p:commandButton>
-										<p:commandButton value="Cancelar" ajax="true" update="@form"
-											styleClass="btn btn-danger-sm ajax-link"
-											icon="ui-icon-circle-close"
-											action="#{tipoEnderecoMB.cancelar}">
-										</p:commandButton>
-										<p:commandButton value="Novo" ajax="true"
-											rendered="#{tipoEnderecoMB.acao eq 'P'}"
-											update=":panelPersist" action="#{tipoEnderecoMB.save}"
-											icon="ui-icon-circle-plus" style="float:right">
-											<f:setPropertyActionListener value="P"
-												target="#{tipoEnderecoMB.acao}" />
-										</p:commandButton>
+							<p:panel id="pGeral" style="border:none;">
 
-										<p:commandButton value="Salvar" ajax="true"
-											rendered="#{tipoEnderecoMB.acao eq 'E' or tipoEnderecoMB.acao eq 'S'}"
-											update=":panelPersist" action="#{tipoEnderecoMB.prepareNovo}"
-											icon="ui-icon-disk" style="float:right">
-											<f:setPropertyActionListener value="S"
-												target="#{tipoEnderecoMB.acao}" />
-										</p:commandButton>
-									</p:panel>
-								</h:form>
-							</div>
-							<p:panel id="panelPersist">
+								<div class="col-md-12">
+									<h:form role="form">
+
+										<p:panel columns="3" layout="grid" style="border:none;">
+											<p:commandButton value="Pesquisar" id="button_pesquisar"
+												styleClass="btn btn-default-sm ajax-link"
+												action="#{tipoEnderecoMB.pesquisar}" ajax="true"
+												icon="ui-icon-search" update=":pGeral">
+												<f:setPropertyActionListener value="P"
+													target="#{tipoEnderecoMB.acao}" />
+											</p:commandButton>
+
+											<p:commandButton value="Cancelar" ajax="true"
+												update=":pGeral" id="button_cancelar"
+												styleClass="btn btn-danger-sm ajax-link"
+												icon="ui-icon-circle-close"
+												action="#{tipoEnderecoMB.cancelar}">
+											</p:commandButton>
+
+											<p:commandButton value="Novo" ajax="true" id="button_novo"
+												rendered="#{tipoEnderecoMB.acao == 'P'}" update=":pGeral"
+												action="#{tipoEnderecoMB.prepareNovo}"
+												icon="ui-icon-circle-plus" style="float:right">
+												<f:setPropertyActionListener value="S"
+													target="#{tipoEnderecoMB.acao}" />
+											</p:commandButton>
+
+
+										</p:panel>
+										<p:panelGrid columns="1" layout="grid" styleClass="col-md-14">
+											<p:outputLabel value="Descrição" for="txtDescricaoPesquisa" />
+											<p:inputText
+												value="#{tipoEnderecoMB.tipoEnderecoPesquisa.descricao}"
+												id="txtDescricaoPesquisa" styleClass="form-control" />
+										</p:panelGrid>
+									</h:form>
+								</div>
+
 								<div class="box col-md-12">
 									<div class="box-inner">
 										<div class="box-header well" data-original-title="">
@@ -81,42 +90,55 @@
 													</h:column>
 													<h:column>
 														<f:facet name="header">Ação</f:facet>
-														<p:commandButton value="Editar" ajax="true" update="@form">
-															<f:setPropertyActionListener value="{tipo}"
+														<p:commandButton value="Editar" ajax="true"
+															update=":pGeral" action="#{tipoEnderecoMB.prepareEditar}">
+															<f:setPropertyActionListener value="#{tipo}"
 																target="#{tipoEnderecoMB.tipoEnderecoSelecionado}" />
 															<f:setPropertyActionListener value="E"
 																target="#{tipoEnderecoMB.acao}" />
 														</p:commandButton>
 														<p:commandButton value="Excluir">
-															<f:setPropertyActionListener value="{tipo}" ajax="true"
-																update="@form"
+															<f:setPropertyActionListener value="#{tipo}" ajax="true"
+																update=":pGeral"
 																target="#{tipoEnderecoMB.tipoEnderecoSelecionado}" />
+															<f:setPropertyActionListener value="P"
+																target="#{tipoEnderecoMB.acao}" />
 														</p:commandButton>
 													</h:column>
 												</h:dataTable>
-
-
-												<h:panelGrid
-													rendered="#{tipoEnderecoMB.acao eq 'E' or tipoEnderecoMB.acao eq 'S'}"
-													id="persistir">
-
-													<p:outputLabel value="Descrição" for="txtId"
-														rendered="#{tipoEnderecoMB.acao eq 'E'}" />
-													<p:inputText
-														value="#{tipoEnderecoMB.tipoEnderecoSelecionado.id}"
-														id="txtId" disabled="true"
-														rendered="#{tipoEnderecoMB.acao eq 'E'}" />
-
-													<p:outputLabel value="Descrição" for="txtDescricao" />
-													<p:inputText
-														value="#{tipoEnderecoMB.tipoEnderecoSelecionado.descricao}" id="txtDescricao" />
-												</h:panelGrid>
 											</h:form>
 										</p:panel>
+
+										<p:panelGrid columns="1" layout="grid" styleClass="col-md-14"
+											rendered="#{tipoEnderecoMB.acao == 'E' or tipoEnderecoMB.acao == 'S'}"
+											id="persistir">
+											<h:form>
+												<p:outputLabel value="Descrição" for="txtId"
+													rendered="#{tipoEnderecoMB.acao == 'E'}" />
+												<p:inputText
+													value="#{tipoEnderecoMB.tipoEnderecoSelecionado.id}"
+													id="txtId" disabled="true"
+													rendered="#{tipoEnderecoMB.acao == 'E'}" />
+
+												<p:outputLabel value="Descrição" for="txtDescricao" />
+												<br />
+												<p:inputText
+													value="#{tipoEnderecoMB.tipoEnderecoSelecionado.descricao}"
+													id="txtDescricao" />
+
+												<p:commandButton value="Salvar" ajax="true"
+													id="button_salvar"
+													rendered="#{tipoEnderecoMB.acao == 'E' or tipoEnderecoMB.acao == 'S'}"
+													update="@all" action="#{tipoEnderecoMB.save}"
+													icon="ui-icon-disk" style="float:right" />
+											</h:form>
+										</p:panelGrid>
 									</div>
+
 								</div>
 							</p:panel>
 						</div>
+
 					</div>
 				</div>
 			</div>

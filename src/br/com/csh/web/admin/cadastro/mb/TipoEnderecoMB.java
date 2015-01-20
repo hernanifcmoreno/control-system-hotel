@@ -18,7 +18,7 @@ import br.com.csh.web.util.JsfUtil;
 public class TipoEnderecoMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String acao = "P";
+	private String acao;
 	private TipoEnderecoBean tipoEnderecoPesquisa;
 	private TipoEnderecoBean tipoEnderecoSelecionado;
 	private Collection<TipoEnderecoBean> tiposEndereco;
@@ -34,7 +34,7 @@ public class TipoEnderecoMB implements Serializable {
 
 	public void save() {
 
-		if (acao == "S") {
+		if ("S".equals(acao)) {
 			UsuarioBean user = new UsuarioBean();
 			user.setId(1);
 			tipoEnderecoSelecionado.setUsuario(user);
@@ -67,6 +67,7 @@ public class TipoEnderecoMB implements Serializable {
 
 	@PostConstruct
 	private void init() {
+		acao = "P";
 		tipoEnderecoPesquisa = new TipoEnderecoBean();
 		tiposEndereco = tipoEnderecoService.findAll();
 	}
