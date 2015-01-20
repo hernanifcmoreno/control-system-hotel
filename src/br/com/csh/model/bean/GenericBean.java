@@ -3,7 +3,6 @@ package br.com.csh.model.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,11 +33,7 @@ public abstract class GenericBean implements Serializable {
 	private Date dataExclusao;
 
 	private int usuarioCadastro;
-	
-	@Column(nullable = true)
 	private @Nullable Integer usuarioAlteracao;
-	
-	@Column(nullable = true)
 	private @Nullable Integer usuarioExlusao;
 
 	@Transient
@@ -83,18 +78,16 @@ public abstract class GenericBean implements Serializable {
 		return ativo;
 	}
 
-	public GenericBean setAtivo(boolean ativo) {
+	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
-		return this;
 	}
 
 	public UsuarioBean getUsuario() {
 		return usuarioBean;
 	}
 
-	public GenericBean setUsuario(UsuarioBean usuarioBean) {
+	public void setUsuario(UsuarioBean usuarioBean) {
 		this.usuarioBean = usuarioBean;
-		return this;
 	}
 
 	@PrePersist

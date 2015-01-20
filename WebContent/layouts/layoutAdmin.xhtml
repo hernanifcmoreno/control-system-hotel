@@ -46,9 +46,16 @@
 	<link rel="shortcut icon" href="img/favicon.ico" />
 
 </h:head>
-<h:body >
-	
+<h:body>
+	<p:ajaxStatus onstart="statusDialog.show();"
+		onsuccess="statusDialog.hide();" />
 	<ui:include src="/layouts/nav.xhtml" />
+	<p:dialog modal="true" widgetVar="statusDialog"
+		header="Aguarde Processamento" draggable="false" closable="false"
+		resizable="false">
+		<h:graphicImage library="img" name="ajax-loader.gif" />
+	</p:dialog>
+	<p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
 	<div class="ch-container">
 		<div class="row">
 			<ui:include src="/layouts/menuLeft.xhtml" />
@@ -71,7 +78,10 @@
 						<li><a href="#">Dashboard</a></li>
 					</ul>
 				</div>
-				<ui:insert name="principal" />
+				<h:form id="formulario" prependId="false">
+					<ui:insert name="principal" />
+				</h:form>
+				>
 			</div>
 			<!--/#content.col-md-0-->
 		</div>
@@ -86,7 +96,8 @@
 		name="moment.min.js" target="body" />
 	<h:outputScript library="bower_components/fullcalendar/dist"
 		name="fullcalendar.min.js" target="body" />
-	<h:outputScript library="js" name="jquery.dataTables.min.js" target="body" />
+	<h:outputScript library="js" name="jquery.dataTables.min.js"
+		target="body" />
 	<h:outputScript library="bower_components/chosen"
 		name="chosen.jquery.min.js" target="body" />
 	<h:outputScript library="bower_components/colorbox"
@@ -97,9 +108,12 @@
 	<h:outputScript library="bower_components/bootstrap-tour/build/js"
 		name="bootstrap-tour.min.js" target="body" />
 	<h:outputScript library="js" name="jquery.raty.min.js" target="body" />
-	<h:outputScript library="js" name="jquery.iphone.toggle.js" target="body" />
-	<h:outputScript library="js" name="jquery.autogrow-textarea.js" target="body" />
-	<h:outputScript library="js" name="jquery.uploadify-3.1.min.js" target="body" />
+	<h:outputScript library="js" name="jquery.iphone.toggle.js"
+		target="body" />
+	<h:outputScript library="js" name="jquery.autogrow-textarea.js"
+		target="body" />
+	<h:outputScript library="js" name="jquery.uploadify-3.1.min.js"
+		target="body" />
 	<h:outputScript library="js" name="jquery.history.js" target="body" />
 	<h:outputScript library="js" name="charisma.js" target="body" />
 </h:body>

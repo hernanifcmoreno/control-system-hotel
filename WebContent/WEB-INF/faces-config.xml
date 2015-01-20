@@ -12,4 +12,12 @@
 		</locale-config>
 	</application>
 
+<!--  <navigation-rule>
+  <description>Tela para Pagamento</description>
+  <from-view-id>/formaPagamento.jsf</from-view-id>
+  <navigation-case>
+   <from-outcome>Forma-De-Pagamento</from-outcome>
+   <to-view-id>/formaPagamento.jsf</to-view-id>
+  </navigation-case>
+ </navigation-rule> -->
 </faces-config>
