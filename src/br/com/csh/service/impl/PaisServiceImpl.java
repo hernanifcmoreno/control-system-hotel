@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.com.csh.model.bean.PaisBean;
 import br.com.csh.model.repository.PaisRepository;
+import br.com.csh.model.repository.UsuarioRepository;
 import br.com.csh.service.PaisService;
 
 public class PaisServiceImpl implements	PaisService {
@@ -13,7 +14,7 @@ public class PaisServiceImpl implements	PaisService {
 	
 	@Inject
 	private PaisRepository paisRepository;
-
+	
 	@Override
 	public void save(PaisBean element) {
 		paisRepository.beginTransaction();

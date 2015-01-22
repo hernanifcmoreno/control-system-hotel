@@ -47,10 +47,12 @@
 <h:body>
 	<div class="ch-container">
 		<div class="row">
-
+		
 			<div class="row">
 				<div class="col-md-12 center login-header">
-					<h2>Welcome to Charisma</h2>
+					
+					<h:outputText value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+					<h2>Bem-Vindo!</h2>
 				</div>
 				<!--/span-->
 			</div>
@@ -58,14 +60,13 @@
 
 			<div class="row">
 				<div class="well col-md-5 center login-box">
-					<div class="alert alert-info">Please login with your Username
-						and Password.</div>
-					<form class="form-horizontal" action="index.html" method="post">
+					<div class="alert alert-info">Por favor entre com seu e-mail e senha.</div>
+					<form class="form-horizontal" action="#{request.contextPath}/j_spring_security_check" method="post">
 						<fieldset>
 							<div class="input-group input-group-lg">
 								<span class="input-group-addon"><i
 									class="glyphicon glyphicon-user red"></i></span> <input type="text"
-									class="form-control" placeholder="E-mail" />
+									class="form-control" name="j_username" id="j_username" placeholder="E-mail" />
 							</div>
 							<div class="clearfix"></div>
 							<br />
@@ -73,7 +74,7 @@
 							<div class="input-group input-group-lg">
 								<span class="input-group-addon"><i
 									class="glyphicon glyphicon-lock red"></i></span> <input
-									type="password" class="form-control" placeholder="Senha" />
+									type="password" name="j_password" id="j_password" class="form-control" placeholder="Senha" />
 							</div>
 							<div class="clearfix"></div>
 

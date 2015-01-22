@@ -15,11 +15,16 @@ public class UsuarioBean {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(length = 25, nullable = false)
+	@Column(name = "username", length = 100, unique = true)
 	private String userName;
 
-	@Column(length = 150, nullable = false)
+	@Column(name = "password", length = 40)
 	private String password;
+
+	@Column(name = "authority")
+	private String autorizacao;
+
+	private boolean ativo;
 
 	public int getId() {
 		return id;
@@ -28,5 +33,38 @@ public class UsuarioBean {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getAutorizacao() {
+		return autorizacao;
+	}
+
+	public void setAutorizacao(String autorizacao) {
+		this.autorizacao = autorizacao;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 
 }
