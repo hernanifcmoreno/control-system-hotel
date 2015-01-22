@@ -5,11 +5,16 @@ import java.util.Collections;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Pais")
+@NamedQueries({
+@NamedQuery(name="PaisBean.buscarPorDescricao", query = "SELECT T FROM PaisBean T WHERE UPPER(T.descricao) like :descricao")
+})
 public class PaisBean extends GenericBean {
 	private static final long serialVersionUID = 1L;
 

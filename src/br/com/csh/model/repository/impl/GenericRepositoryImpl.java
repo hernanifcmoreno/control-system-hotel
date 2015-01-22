@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import br.com.csh.model.bean.GenericBean;
 import br.com.csh.model.repository.GenericRepository;
 import br.com.csh.service.qualifier.Persistencia;
 
@@ -32,14 +33,13 @@ public class GenericRepositoryImpl<Entity, Key> implements
 
 	@Override
 	public void delete(Entity element) {
-		em.remove(element);
+		em.remove(em.getReference(getTypeClass(), ((GenericBean)element).getId()));
 		em.flush();
-
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Entity FindById(Key key) {
+	public Entity findById(Key key) {
 		return (Entity) em.find(getTypeClass(), key);
 	}
 

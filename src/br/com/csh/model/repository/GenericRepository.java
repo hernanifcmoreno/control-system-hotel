@@ -11,16 +11,16 @@ public interface GenericRepository<Entity, Key> extends Serializable {
 
 	void delete(Entity element);
 
-	Entity FindById(Key key);
+	Entity findById(Key key);
 
 	Collection<Entity> findAll();
 
 	int count();
-	
+
 	void beginTransaction();
-	
+
 	void commit();
-	
+
 	void rollback();
-	
+
 }

@@ -76,19 +76,16 @@
 										<p:panel rendered="#{tipoEnderecoMB.acao == 'P'}"
 											id="formPesquisaResultado">
 											<h:form id="formResultado">
-												<h:dataTable value="#{tipoEnderecoMB.tiposEndereco}"
+												<p:dataTable value="#{tipoEnderecoMB.tiposEndereco}"
 													var="tipo"
 													styleClass="table table-striped table-bordered responsive">
-													<h:column>
-														<f:facet name="header">Id</f:facet>
+													<p:column headerText="Id">
 														<h:outputText value="#{tipo.id}" />
-													</h:column>
-													<h:column>
-														<f:facet name="header">Descrição</f:facet>
+													</p:column>
+													<p:column headerText="Descrição">
 														<h:outputText value="#{tipo.descricao}" />
-													</h:column>
-													<h:column>
-														<f:facet name="header">Ação</f:facet>
+													</p:column>
+													<p:column  headerText="Descrição">
 														<p:commandButton value="Editar" ajax="true"
 															update=":pGeral" action="#{tipoEnderecoMB.prepareEditar}">
 															<f:setPropertyActionListener value="#{tipo}"
@@ -103,8 +100,8 @@
 															<f:setPropertyActionListener value="P"
 																target="#{tipoEnderecoMB.acao}" />
 														</p:commandButton>
-													</h:column>
-												</h:dataTable>
+													</p:column>
+												</p:dataTable>
 											</h:form>
 										</p:panel>
 
@@ -128,7 +125,7 @@
 												<p:commandButton value="Salvar" ajax="true"
 													id="button_salvar"
 													rendered="#{tipoEnderecoMB.acao == 'E' or tipoEnderecoMB.acao == 'S'}"
-													update="@all" action="#{tipoEnderecoMB.save}"
+													update=":pGeral" action="#{tipoEnderecoMB.save}"
 													icon="ui-icon-disk" style="float:right" />
 											</h:form>
 										</p:panelGrid>

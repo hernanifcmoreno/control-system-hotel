@@ -14,7 +14,7 @@ import br.com.csh.model.Sexo;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class PessoaBean extends GenericBean {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Column(unique = true, length = 150)
 	private String email;
 
@@ -24,7 +24,7 @@ public abstract class PessoaBean extends GenericBean {
 
 	@Enumerated
 	private Sexo sexo;
-	
+
 	public PessoaBean setEmail(String email) {
 		this.email = email;
 		return this;
@@ -37,7 +37,5 @@ public abstract class PessoaBean extends GenericBean {
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
-	
-	
 
 }

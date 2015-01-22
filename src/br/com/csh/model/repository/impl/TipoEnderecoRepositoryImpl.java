@@ -2,8 +2,6 @@ package br.com.csh.model.repository.impl;
 
 import java.util.Collection;
 
-import javax.persistence.TypedQuery;
-
 import br.com.csh.model.bean.TipoEnderecoBean;
 import br.com.csh.model.repository.TipoEnderecoRepository;
 

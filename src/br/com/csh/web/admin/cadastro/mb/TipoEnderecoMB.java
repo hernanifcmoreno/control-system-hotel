@@ -29,7 +29,6 @@ public class TipoEnderecoMB implements Serializable {
 	public void pesquisar() {
 		tiposEndereco = tipoEnderecoService
 				.buscarPorDescricao(tipoEnderecoPesquisa.getDescricao());
-
 	}
 
 	public void save() {
@@ -40,9 +39,10 @@ public class TipoEnderecoMB implements Serializable {
 			tipoEnderecoSelecionado.setUsuario(user);
 			tipoEnderecoService.save(tipoEnderecoSelecionado);
 			tipoEnderecoSelecionado = new TipoEnderecoBean();
-		}else{
+		} else {
 			tipoEnderecoService.update(tipoEnderecoSelecionado);
 		}
+		acao = "P";
 		JsfUtil.mensagemOK("msg", "Operacao realizada com sucesso!");
 	}
 

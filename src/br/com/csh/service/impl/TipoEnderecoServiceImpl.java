@@ -40,7 +40,7 @@ public class TipoEnderecoServiceImpl implements	TipoEnderecoService {
 
 	@Override
 	public TipoEnderecoBean findById(Integer key) {
-		return tipoEnderecoRepository.FindById(key);
+		return tipoEnderecoRepository.findById(key);
 	}
 
 	@Override

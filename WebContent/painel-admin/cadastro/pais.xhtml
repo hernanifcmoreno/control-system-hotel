@@ -1,9 +1,138 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-	<ui:composition template="">
-	</ui:composition>
+<ui:composition template="/layouts/layoutAdmin.xhtml">
+	<ui:define name="principal">
+		<div class="row">
+			<div class="box col-md-12">
+				<div class="box-inner">
+					<div class="box-header well" data-original-title="">
+						<h2>
+							<i class="glyphicon glyphicon-star-empty"></i> País
+						</h2>
+
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round btn-default"><i
+								class="glyphicon glyphicon-chevron-up"></i></a> <a href="#"
+								class="btn btn-close btn-round btn-default"><i
+								class="glyphicon glyphicon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<div class="box-content row">
+							<p:panel id="pGeral" style="border:none;">
+
+								<div class="col-md-12">
+									<h:form role="form">
+
+										<p:panel columns="3" layout="grid" style="border:none;">
+											<p:commandButton value="Pesquisar" id="button_pesquisar"
+												styleClass="btn btn-default-sm ajax-link"
+												action="#{paisMB.pesquisar}" ajax="true"
+												icon="ui-icon-search" update=":pGeral">
+												<f:setPropertyActionListener value="P"
+													target="#{paisMB.acao}" />
+											</p:commandButton>
+
+											<p:commandButton value="Cancelar" ajax="true"
+												update=":pGeral" id="button_cancelar"
+												styleClass="btn btn-danger-sm ajax-link"
+												icon="ui-icon-circle-close" action="#{paisMB.cancelar}">
+											</p:commandButton>
+
+											<p:commandButton value="Novo" ajax="true" id="button_novo"
+												rendered="#{paisMB.acao == 'P'}" update=":pGeral"
+												action="#{paisMB.prepareNovo}" icon="ui-icon-circle-plus"
+												style="float:right">
+												<f:setPropertyActionListener value="S"
+													target="#{paisMB.acao}" />
+											</p:commandButton>
+
+
+										</p:panel>
+										<p:panelGrid columns="1" layout="grid" styleClass="col-md-14">
+											<p:outputLabel value="Descrição" for="txtDescricaoPesquisa" />
+											<p:inputText value="#{paisMB.paisPesquisa.descricao}"
+												id="txtDescricaoPesquisa" styleClass="form-control" />
+										</p:panelGrid>
+									</h:form>
+								</div>
+
+								<div class="box col-md-12">
+									<div class="box-inner">
+										<div class="box-header well" data-original-title="">
+											<h2>Tipos de Endereços Cadastrados</h2>
+											<div class="box-icon">
+												<a href="#" class="btn btn-minimize btn-round btn-default"><i
+													class="glyphicon glyphicon-chevron-up"></i></a>
+											</div>
+										</div>
+										<p:panel rendered="#{paisMB.acao == 'P'}"
+											id="formPesquisaResultado">
+											<h:form id="formResultado">
+												<p:dataTable value="#{paisMB.paises}" var="tipo"
+													styleClass="table table-striped table-bordered responsive">
+													<p:column headerText="Id">
+														<h:outputText value="#{tipo.id}" />
+													</p:column>
+													<p:column headerText="Descrição">
+														<h:outputText value="#{tipo.descricao}" />
+													</p:column>
+													<p:column headerText="Descrição">
+														<p:commandButton value="Editar" ajax="true"
+															update=":pGeral" action="#{paisMB.prepareEditar}">
+															<f:setPropertyActionListener value="#{tipo}"
+																target="#{paisMB.paisSelecionado}" />
+															<f:setPropertyActionListener value="E"
+																target="#{paisMB.acao}" />
+														</p:commandButton>
+														<p:commandButton value="Excluir">
+															<f:setPropertyActionListener value="#{tipo}" ajax="true"
+																update=":pGeral" target="#{paisMB.paisSelecionado}" />
+															<f:setPropertyActionListener value="P"
+																target="#{paisMB.acao}" />
+														</p:commandButton>
+													</p:column>
+												</p:dataTable>
+											</h:form>
+										</p:panel>
+
+										<p:panelGrid columns="1" layout="grid" styleClass="col-md-14"
+											rendered="#{paisMB.acao == 'E' or paisMB.acao == 'S'}"
+											id="persistir">
+											<h:form>
+												<p:outputLabel value="Descrição" for="txtId"
+													rendered="#{paisMB.acao == 'E'}" />
+												<p:inputText value="#{paisMB.paisSelecionado.id}" id="txtId"
+													disabled="true" rendered="#{paisMB.acao == 'E'}" />
+
+												<p:outputLabel value="Descrição" for="txtDescricao" />
+												<br />
+												<p:inputText value="#{paisMB.paisSelecionado.descricao}"
+													id="txtDescricao" />
+
+												<p:commandButton value="Salvar" ajax="true"
+													id="button_salvar"
+													rendered="#{paisMB.acao == 'E' or paisMB.acao == 'S'}"
+													update=":pGeral" action="#{paisMB.save}"
+													icon="ui-icon-disk" style="float:right" />
+											</h:form>
+										</p:panelGrid>
+									</div>
+
+								</div>
+							</p:panel>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/row-->
+	</ui:define>
+</ui:composition>
 </html>

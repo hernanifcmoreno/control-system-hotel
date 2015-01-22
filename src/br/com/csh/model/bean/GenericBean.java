@@ -104,7 +104,7 @@ public abstract class GenericBean implements Serializable {
 			usuarioExlusao = usuarioBean.getId();
 		} else {
 			dataAlteracao = new Date();
-			usuarioAlteracao = usuarioBean.getId();
+			//usuarioAlteracao = usuarioBean.getId();
 		}
 	}
 }

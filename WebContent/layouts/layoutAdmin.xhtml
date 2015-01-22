@@ -47,16 +47,18 @@
 
 </h:head>
 <h:body>
-	<p:ajaxStatus onstart="statusDialog.show();"
-		onsuccess="statusDialog.hide();" />
+
 	<ui:include src="/layouts/nav.xhtml" />
-	<p:dialog modal="true" widgetVar="statusDialog"
-		header="Aguarde Processamento" draggable="false" closable="false"
-		resizable="false">
-		<h:graphicImage library="img" name="ajax-loader.gif" />
-	</p:dialog>
-	<p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
+	<p:growl id="msg" sticky="true" autoUpdate="true" life="2000" />
 	<div class="ch-container">
+		<p:ajaxStatus onstart="PF('statusDialog').show();"
+			onsuccess="PF('statusDialog').hide();" />
+
+		<p:dialog modal="true" widgetVar="statusDialog"
+			header="Aguarde Processamento" draggable="false" closable="false"
+			resizable="false" position="center center" showEffect="fade">
+			<h:graphicImage library="img" name="ajax-loader.gif" />
+		</p:dialog>
 		<div class="row">
 			<ui:include src="/layouts/menuLeft.xhtml" />
 			<noscript>
@@ -78,10 +80,7 @@
 						<li><a href="#">Dashboard</a></li>
 					</ul>
 				</div>
-				<h:form id="formulario" prependId="false">
-					<ui:insert name="principal" />
-				</h:form>
-				>
+				<ui:insert name="principal" />
 			</div>
 			<!--/#content.col-md-0-->
 		</div>
